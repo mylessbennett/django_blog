@@ -8,23 +8,13 @@
 <body>
   <header>
     <h1>My First Django Blog</h1>
-
-    <h3>{{ date }}</h3>
   </header>
-
-    <h4>What is a client?</h4>
-    <p>A client is whoever is trying to access data from a server .</p>
-
-    <h4>What is a server?</h4>
-    <p>A server is used to store and distribute data to clients through requests.</p>
-
-    <h4>What is an HTTP request?</h4>
-    <p>Is used to allow for communication between client and server.  The client sends a request to the server asking for information.</p>
-
-    <h4>What is a response?</h4>
-    <p>An HTTP response is what the server sends back to the client following a request.  The response contains codes related to the outcome of the request and could also contain the requested information.</p>
-
-    <h4>What is Django and why do we use it?</h4>
-    <p>Django is a python framework that provides us with the structure and methods for building web apps</p>
+  <main>
+    {% for article in articles %}
+      <h3>{{article.title}}</h3>
+      <p>{{article.body}}</p>
+      <p>{{article.author}} | {{article.published_date}}</p>
+    {% endfor %}
+  </main>
 </body>
 </html>

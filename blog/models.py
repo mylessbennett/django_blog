@@ -7,3 +7,6 @@ class Article(models.Model):
     draft = models.BooleanField()
     published_date = models.DateTimeField(auto_now_add=True)
     author = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.title
