@@ -1,20 +1,11 @@
-<html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>My First Django Blog</title>
-</head>
-<body>
-  <header>
-    <h1>My First Django Blog</h1>
-  </header>
-  <main>
-    {% for article in articles %}
+{% extends 'base.html' %}
+{% block content %}
+{% for article in articles %}
+  <article class="post_link">
+    <a href="{% url 'blog_post' id=article.id%}">
       <h3>{{article.title}}</h3>
-      <p>{{article.body}}</p>
       <p>{{article.author}} | {{article.published_date}}</p>
-    {% endfor %}
-  </main>
-</body>
-</html>
+    </a>
+  </article>
+{% endfor %}
+{% endblock %}

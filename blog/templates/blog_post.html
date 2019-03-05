@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+  <article class="post_content">
+    <h3>{{article.title}}</h3>
+    <p>{{article.body}}</p>
+    <p>{{article.author}} | {{article.published_date}}</p>
+  </article>
+{% endblock %}
