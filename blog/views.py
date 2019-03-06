@@ -1,6 +1,6 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
-from blog.models import Article
+from blog.models import Article, Comment
 
 
 def root(request):
@@ -21,4 +21,9 @@ def blog_post(request, id):
 
 
 def create_comment(request):
-    pass
+    Comment.objects.create(
+        user_name=request.POST['user_name'],
+        message=request.POST['message'],
+        blog_post=Article.objects.get(pk=request.POST['blog_id'])
+    )
+    return HttpResponseRedirect('/post/' + request.POST['blog_id'])
