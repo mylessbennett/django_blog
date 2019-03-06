@@ -38,7 +38,7 @@ a {
 
 footer {
   background-color: #0C4B33;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   color: white;
   font-family: 'Ubuntu', sans-serif;
@@ -59,4 +59,8 @@ footer {
 
 .post_content {
     padding: 5px 25px;
+}
+
+.post_link:hover {
+  background-color: #9CDBBD;
 }

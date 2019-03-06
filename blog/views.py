@@ -18,3 +18,7 @@ def blog_post(request, id):
     context = {'article': article}
     response = render(request, 'blog_post.html', context)
     return HttpResponse(response)
+
+
+def create_comment(request):
+    pass

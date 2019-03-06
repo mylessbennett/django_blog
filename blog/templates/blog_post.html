@@ -5,4 +5,20 @@
     <p>{{article.body}}</p>
     <p>{{article.author}} | {{article.published_date}}</p>
   </article>
+  <article class="comment_section">
+    <form class="" action="{% url 'create_comment' %}" method="post">
+      {% csrf_token %}
+
+      <label for="comment_message">Comments</label>
+      <textarea name="comment_message" rows="8" cols="80" placeholder="Add a comment..."></textarea>
+
+      <input type="hidden" name="blog_id" value="{{ post.pk }}">
+      <input type="text" name="user_name" placeholder="Enter your name...">
+
+      <button type="submit" name="submit_button">
+        Post Comment
+      </button>
+
+    </form>
+  </article>
 {% endblock %}
