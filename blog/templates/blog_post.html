@@ -6,22 +6,25 @@
     <p>{{article.author}} | {{article.published_date}}</p>
   </article>
   <article class="comment_section">
-    <form class="" action="{% url 'create_comment' %}" method="post">
+    <form class="comment_form" action="{% url 'create_comment' %}" method="post">
       {% csrf_token %}
+      <input type="hidden" name="blog_post_id" value="{{ article.pk }}">
 
-      <label for="message">Comments</label>
-      <textarea name="message" rows="8" cols="80" placeholder="Add a comment..."></textarea>
+      <div class="comment_box">
+        <!-- <label for="message"><span class="comment_label">Comments</span></label>
+        <textarea name="message" rows="8" cols="155" placeholder="Add a comment..."></textarea>
 
-      <input type="hidden" name="blog_id" value="{{ article.pk }}">
-      <input type="text" name="user_name" placeholder="Enter your name...">
+        <input type="text" name="user_name" placeholder="Enter your name..." class="user_box"> -->
+        {{form.as_p}}
+        <button type="submit" name="submit_button" class="comment_button">
+          Post Comment
+        </button>
+      </div>
 
-      <button type="submit" name="submit_button">
-        Post Comment
-      </button>
     </form>
-    <ul>
+    <ul class="comment_list">
       {% for comment in article.comments.all %}
-        <li>{{comment.user_name}} | {{comment.message}}</li>
+        <li><i class="fa fa-user-circle-o" style="font-size: 1em"></i> {{comment.user_name}}: {{comment.message}}</li>
       {% endfor %}
     </ul>
   </article>

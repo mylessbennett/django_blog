@@ -1,3 +1,7 @@
+html, body {
+  height: 100%
+};
+
 * {
   box-sizing: border-box;
 }
@@ -25,6 +29,12 @@ p {
   font-family: 'Raleway', sans-serif;
 }
 
+.wrapper {
+  position: relative;
+  height: 100%;
+  padding-bottom: 120px;
+}
+
 .post_link {
     text-align: center;
     padding: 15px;
@@ -38,7 +48,7 @@ a {
 
 footer {
   background-color: #0C4B33;
-  position: fixed;
+  position: absolute;
   bottom: 0;
   color: white;
   font-family: 'Ubuntu', sans-serif;
@@ -63,4 +73,27 @@ footer {
 
 .post_link:hover {
   background-color: #9CDBBD;
+}
+
+.comment_section {
+  display: inline-block;
+}
+
+.comment_list {
+  border-top: thin solid #0C4B33;
+  list-style: none;
+  margin: 0 -3px;
+}
+
+.comment_list li {
+  padding-top: 5px;
+}
+
+.comment_label {
+  font-size: 1.5em;
+  font-family: 'Raleway', sans-serif;
+}
+
+.comment_box {
+  margin: 0 10px;
 }

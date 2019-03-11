@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from blog.views import root, home_page, blog_post, create_comment
+from blog.views import root, home_page, blog_post, create_comment, create_article
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -23,4 +23,5 @@ urlpatterns = [
     path('home/', home_page, name='home_page'),
     path('post/<int:id>', blog_post, name='blog_post'),
     path('comments/new', create_comment, name='create_comment'),
+    path('create_article', create_article, name='create_article'),
 ]

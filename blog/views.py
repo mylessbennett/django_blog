@@ -1,6 +1,7 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from blog.models import Article, Comment
+from blog.forms import CommentForm
 
 
 def root(request):
@@ -15,15 +16,23 @@ def home_page(request):
 
 def blog_post(request, id):
     article = get_object_or_404(Article, pk=id)
-    context = {'article': article}
+    form = CommentForm(request.POST)
+    context = {'article': article, 'form': form}
     response = render(request, 'blog_post.html', context)
     return HttpResponse(response)
 
 
 def create_comment(request):
-    Comment.objects.create(
-        user_name=request.POST['user_name'],
-        message=request.POST['message'],
-        blog_post=Article.objects.get(pk=request.POST['blog_id'])
-    )
-    return HttpResponseRedirect('/post/' + request.POST['blog_id'])
+    blog_post = Article.objects.get(pk=request.POST['blog_post_id'])
+    form = CommentForm(request.POST)
+    if form.is_valid():
+        comment = form.instance
+        comment.blog_post = blog_post
+        comment.save()
+        return HttpResponseRedirect('/post/' + request.POST['blog_post_id'])
+    else:
+        return render(request, 'blog_post.html', {'form': form})
+
+
+def create_article(request):
+    pass
