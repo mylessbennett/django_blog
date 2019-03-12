@@ -4,6 +4,9 @@
 <form class="article_form" action="{% url 'create_article' %}" method="post">
   {% csrf_token %}
   {{form.as_p}}
+  <button type="submit" name="submit_button" class="article_button">
+    Submit Article
+  </button>
 </form>
 
 {% endblock %}

@@ -1,7 +1,7 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
-from blog.models import Article, Comment
-from blog.forms import CommentForm
+from blog.models import Article
+from blog.forms import CommentForm, ArticleForm
 
 
 def root(request):
@@ -35,4 +35,9 @@ def create_comment(request):
 
 
 def create_article(request):
-    pass
+    form = ArticleForm(request.POST)
+    if form.is_valid():
+        new_article = form.save()
+        return HttpResponseRedirect('/')
+    else:
+        return render(request, 'create_article.html', {'form': form})
