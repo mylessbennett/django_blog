@@ -4,6 +4,7 @@
     <h3>{{article.title}}</h3>
     <p>{{article.body}}</p>
     <p>{{article.author}} | {{article.published_date}}</p>
+    <p>Posted by user: {{request.user}}</p>
   </article>
   <article class="comment_section">
     <form class="comment_form" action="{% url 'create_comment' %}" method="post">

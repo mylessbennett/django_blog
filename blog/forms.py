@@ -5,6 +5,11 @@ from blog.models import Comment, Article
 from datetime import datetime
 
 
+class LoginForm(forms.Form):
+    username = forms.CharField(label='User Name', max_length=64)
+    password = forms.CharField(widget=forms.PasswordInput())
+
+
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
@@ -14,7 +19,7 @@ class CommentForm(forms.ModelForm):
 class ArticleForm(forms.ModelForm):
     class Meta:
         model = Article
-        fields = '__all__'
+        fields = ['title', 'body', 'draft', 'published_date', 'author']
         widgets = {
             'published_date': forms.DateInput(attrs={'type': 'date'})
         }

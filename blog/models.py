@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Article(models.Model):
@@ -7,6 +8,7 @@ class Article(models.Model):
     draft = models.BooleanField()
     published_date = models.DateTimeField()
     author = models.CharField(max_length=255)
+    user = models.ForeignKey(User, related_name="user_article", on_delete=models.CASCADE, default=1)
 
     def __str__(self):
         return self.title
